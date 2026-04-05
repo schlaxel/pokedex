@@ -91,7 +91,7 @@ Each Pokemon entry currently contains:
 - `locationName`
 - `qrToken`
 
-There are currently 10 sample entries with placeholder friend content and Berlin coordinates.
+There are currently 10 sample entries with placeholder friend content and Freiburg im Breisgau coordinates.
 
 ## Important Current Files
 
