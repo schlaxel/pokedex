@@ -29,7 +29,6 @@ function getScannerErrorMessage(error: unknown) {
 
 export function ScannerPanel({ onScan, onError, status }: ScannerPanelProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [isUploadScanning, setIsUploadScanning] = useState(false);
 
   useEffect(() => {
     const reader = new BrowserMultiFormatReader();
@@ -96,29 +95,6 @@ export function ScannerPanel({ onScan, onError, status }: ScannerPanelProps) {
     };
   }, [onError, onScan]);
 
-  async function handleFileUpload(event: React.ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    if (!file) {
-      return;
-    }
-
-    setIsUploadScanning(true);
-    const fileUrl = URL.createObjectURL(file);
-    const reader = new BrowserMultiFormatReader();
-
-    try {
-      const result = await reader.decodeFromImageUrl(fileUrl);
-      onScan(result.getText());
-    } catch (error) {
-      console.error(error);
-      onError("Could not read a QR code from that image.");
-    } finally {
-      URL.revokeObjectURL(fileUrl);
-      event.target.value = "";
-      setIsUploadScanning(false);
-    }
-  }
-
   return (
     <div className="scanner-panel">
       <div className="scanner-panel__video-wrap">
@@ -127,11 +103,6 @@ export function ScannerPanel({ onScan, onError, status }: ScannerPanelProps) {
       <div className={`scan-status scan-status--${status.kind}`}>
         {status.kind === "idle" ? "Point the camera at a QR code." : status.message}
       </div>
-      <label className="upload-fallback">
-        <span>Upload QR image</span>
-        <input accept="image/*" onChange={handleFileUpload} type="file" />
-        <strong>{isUploadScanning ? "Reading image..." : "Choose photo"}</strong>
-      </label>
     </div>
   );
 }

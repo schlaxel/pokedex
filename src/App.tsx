@@ -11,6 +11,7 @@ import {
 import type { PokemonEntry, ScanStatus } from "./types";
 
 type Tab = "pokedex" | "map" | "admin";
+const LAST_UPDATED = "2026-04-06 01:41";
 
 const MapView = lazy(() =>
   import("./components/MapView").then((module) => ({ default: module.MapView })),
@@ -160,9 +161,13 @@ export default function App() {
           </button>
         </nav>
 
-        <main className="screen">
+        <main
+          className={`screen ${activeTab === "map" ? "screen--map" : ""} ${
+            isScannerOpen ? "screen--scanner-open" : ""
+          }`}
+        >
           {activeTab === "pokedex" && (
-            <section className="screen-panel">
+            <section className="screen-panel screen-panel--map">
               <div className="screen-panel__header">
                 <div>
                   <p className="screen-panel__label">Registry</p>
@@ -226,7 +231,7 @@ export default function App() {
 
               <div className="status-row">
                 <div className="status-pill">
-                  Scan these with the in-app scanner or upload them as images.
+                  Use these codes to test the in-app scanner.
                 </div>
               </div>
 
@@ -250,6 +255,7 @@ export default function App() {
         </button>
 
         <footer className="app-footer">
+          <span className="footer-stamp">Updated: {LAST_UPDATED}</span>
           <button
             className="footer-link"
             onClick={() => setActiveTab("admin")}
@@ -261,24 +267,23 @@ export default function App() {
       </div>
 
       {isScannerOpen && (
-        <div className="modal-shell" role="dialog" aria-modal="true">
+        <div className="modal-shell scanner-modal-shell" role="dialog" aria-modal="true">
           <div
             className="modal-shell__backdrop"
             onClick={() => setIsScannerOpen(false)}
           />
-          <div className="modal-shell__panel">
-            <div className="screen-panel__header">
-              <div>
-                <p className="screen-panel__label">Scanner</p>
-                <h2>Register Pokemon</h2>
-              </div>
-              <button
-                className="modal-close"
-                onClick={() => setIsScannerOpen(false)}
-                type="button"
-              >
-                Close
-              </button>
+          <div className="modal-shell__panel scanner-modal-panel">
+            <button
+              className="scanner-overlay-close"
+              onClick={() => setIsScannerOpen(false)}
+              type="button"
+            >
+              Close
+            </button>
+
+            <div className="scanner-modal-copy">
+              <p className="screen-panel__label">Scanner</p>
+              <h2>Register Pokemon</h2>
             </div>
 
             <Suspense fallback={<div className="panel__loading">Starting scanner...</div>}>

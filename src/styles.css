@@ -197,6 +197,10 @@ a {
   box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.85);
 }
 
+.screen--map {
+  padding: 4px;
+}
+
 .screen-panel {
   height: 100%;
   border-radius: 22px;
@@ -205,6 +209,10 @@ a {
     linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.15)),
     var(--screen-bg);
   border: 3px solid var(--panel-line);
+}
+
+.screen-panel--map {
+  padding: 8px;
 }
 
 .screen-panel__header,
@@ -311,10 +319,10 @@ a {
 }
 
 .screen-panel .leaflet-container {
-  margin-top: 14px;
-  height: 58vh;
-  min-height: 380px;
-  border-radius: 18px;
+  margin-top: 10px;
+  height: 74vh;
+  min-height: 560px;
+  border-radius: 14px;
   border: 3px solid #82949f;
 }
 
@@ -437,8 +445,20 @@ a {
 
 .app-footer {
   display: flex;
+  align-items: center;
+  gap: 10px;
   justify-content: center;
   margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.footer-stamp {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(246, 240, 221, 0.14);
+  color: #fff8ef;
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
 .footer-link {
@@ -475,6 +495,7 @@ a {
   display: grid;
   place-items: center;
   padding: 16px;
+  overflow-x: hidden;
 }
 
 .modal-shell__backdrop,
@@ -497,6 +518,39 @@ a {
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3);
 }
 
+.scanner-modal-shell {
+  padding: 0;
+}
+
+.scanner-modal-panel {
+  width: 100vw;
+  max-height: 100vh;
+  min-height: 100vh;
+  border-radius: 0;
+  padding: 18px 18px 22px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scanner-modal-copy {
+  padding-top: 44px;
+  margin-bottom: 12px;
+}
+
+.scanner-overlay-close {
+  position: absolute;
+  top: max(14px, env(safe-area-inset-top));
+  right: 14px;
+  z-index: 2;
+  min-width: 88px;
+  border-radius: 999px;
+  padding: 12px 18px;
+  font-weight: 800;
+  color: var(--ink);
+  background: linear-gradient(180deg, #ffd96b 0%, #e7bc2f 100%);
+  border: 2px solid #8a6b15;
+}
+
 .scanner-panel {
   display: grid;
   gap: 16px;
@@ -505,16 +559,19 @@ a {
 
 .scanner-panel__video-wrap {
   overflow: hidden;
-  border-radius: 22px;
+  border-radius: 18px;
   background: #091118;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: auto;
+  height: 70vh;
+  min-height: 520px;
   border: 3px solid #6f808a;
 }
 
 .scanner-panel__video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #091118;
 }
 
 .scan-status {
@@ -535,25 +592,6 @@ a {
 .scan-status--error {
   background: rgba(207, 32, 41, 0.16);
   color: #8e1920;
-}
-
-.upload-fallback {
-  display: grid;
-  gap: 8px;
-  padding: 14px 16px;
-  border-radius: 16px;
-  border: 2px dashed #8fa0aa;
-  background: rgba(255, 255, 255, 0.52);
-  color: var(--ink-soft);
-  font-weight: 700;
-}
-
-.upload-fallback input {
-  color: var(--ink);
-}
-
-.upload-fallback strong {
-  color: var(--ink);
 }
 
 .manual-form {
@@ -618,13 +656,21 @@ a {
 }
 
 @media (max-width: 760px) {
+  .scanner-modal-shell {
+    place-items: stretch;
+  }
+
+  .scanner-modal-shell .modal-shell__backdrop {
+    background: #091118;
+  }
+
   .app-shell {
-    padding: 10px 8px 90px;
+    padding: 8px 6px 90px;
   }
 
   .pokedex-shell {
-    padding: 14px;
-    border-radius: 24px;
+    padding: 10px;
+    border-radius: 20px;
   }
 
   .pokedex-header {
@@ -638,10 +684,107 @@ a {
 
   .screen {
     min-height: auto;
+    padding: 4px;
+  }
+
+  .screen-panel {
+    padding: 10px;
+  }
+
+  .screen-panel--map {
+    padding: 6px;
   }
 
   .pokedex-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .screen-panel .leaflet-container {
+    margin-top: 8px;
+    height: 79vh;
+    min-height: 620px;
+    border-radius: 12px;
+  }
+
+  .scanner-modal-panel {
+    width: 100vw;
+    min-height: 100dvh;
+    max-height: 100dvh;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: #091118;
+  }
+
+  .scanner-modal-copy {
+    position: absolute;
+    top: max(14px, env(safe-area-inset-top));
+    left: 12px;
+    right: 116px;
+    z-index: 2;
+    padding-top: 0;
+    margin-bottom: 0;
+    color: #f6f0dd;
+  }
+
+  .scanner-modal-copy .screen-panel__label {
+    color: rgba(246, 240, 221, 0.82);
+  }
+
+  .scanner-modal-copy h2 {
+    color: #fff8ef;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  }
+
+  .scanner-overlay-close {
+    top: max(14px, env(safe-area-inset-top));
+    right: 12px;
+    z-index: 3;
+  }
+
+  .scanner-panel {
+    position: relative;
+    min-height: 100dvh;
+    margin-top: 0;
+    gap: 0;
+  }
+
+  .scanner-panel__video-wrap {
+    border: 0;
+    border-radius: 0;
+    height: 100dvh;
+    min-height: 100dvh;
+  }
+
+  .scan-status,
+  .manual-form {
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .scan-status {
+    bottom: calc(168px + env(safe-area-inset-bottom));
+    padding: 12px 14px;
+    background: rgba(244, 240, 230, 0.92);
+    backdrop-filter: blur(10px);
+    max-height: 24vh;
+    overflow-y: auto;
+  }
+
+  .manual-form {
+    bottom: max(10px, env(safe-area-inset-bottom));
+    margin-top: 0;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: rgba(244, 240, 230, 0.92);
+    backdrop-filter: blur(10px);
+  }
+
+  .manual-form label {
+    margin-bottom: 6px;
   }
 
   .scanner-fab {
