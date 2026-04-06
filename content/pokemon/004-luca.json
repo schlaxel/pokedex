@@ -1,0 +1,17 @@
+{
+  "id": "004",
+  "name": "Luca",
+  "nickname": "Professor Vibes",
+  "image": "https://images.unsplash.com/photo-1504257432389-52343af06ae3?auto=format&fit=crop&w=900&q=80",
+  "bio": "Studies advanced friendship mechanics and delivers highly effective morale boosts in the wild.",
+  "funFacts": [
+    "Signature move: Wisdom Burst",
+    "Can order for the whole table flawlessly",
+    "Often found near late-night food sources"
+  ],
+  "type": "Support",
+  "rarity": "Rare Spawn",
+  "locationName": "Stadtgarten Freiburg",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8574,48.0006]}",
+  "qrToken": "professor-vibes"
+}

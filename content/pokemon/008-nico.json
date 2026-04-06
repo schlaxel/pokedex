@@ -1,0 +1,17 @@
+{
+  "id": "008",
+  "name": "Nico",
+  "nickname": "Stealth Sipper",
+  "image": "https://images.unsplash.com/photo-1506795664069-5dd4f8d2bd66?auto=format&fit=crop&w=900&q=80",
+  "bio": "Quiet at first, then suddenly becomes the strategic mastermind behind the whole operation.",
+  "funFacts": [
+    "Signature move: Silent Plan",
+    "Can order exactly the right drink for everyone",
+    "Has suspiciously strong route-planning stats"
+  ],
+  "type": "Psychic",
+  "rarity": "Shadow Rare",
+  "locationName": "Mundenhof Entrance",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8602,48.0081]}",
+  "qrToken": "stealth-sipper"
+}

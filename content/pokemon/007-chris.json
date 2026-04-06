@@ -1,0 +1,17 @@
+{
+  "id": "007",
+  "name": "Chris",
+  "nickname": "Coach Hype",
+  "image": "https://images.unsplash.com/photo-1546961329-78bef0414d7c?auto=format&fit=crop&w=900&q=80",
+  "bio": "Turns every small moment into a full championship run with unreasonable levels of energy.",
+  "funFacts": [
+    "Signature move: Pep Rally",
+    "Can start a chant out of nowhere",
+    "Uses finger guns as a support ability"
+  ],
+  "type": "Fighting",
+  "rarity": "Gym Leader",
+  "locationName": "Schwabentor",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8468,47.9935]}",
+  "qrToken": "coach-hype"
+}

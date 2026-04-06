@@ -1,4 +1,12 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
+import {
+  Link,
+  NavLink,
+  Navigate,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import { AdminQrCard } from "./components/AdminQrCard";
 import { PokedexCard } from "./components/PokedexCard";
 import { PokedexDetail } from "./components/PokedexDetail";
@@ -8,10 +16,16 @@ import {
   persistUnlockedIds,
   resetUnlockedIds,
 } from "./lib/unlock";
-import type { PokemonEntry, ScanStatus } from "./types";
+import type { ScanStatus } from "./types";
 
-type Tab = "pokedex" | "map" | "admin";
-const LAST_UPDATED = "2026-04-06 01:41";
+type Tab = "pokedex" | "map" | "test-codes";
+
+const LAST_UPDATED = "2026-04-06 02:43";
+const tabPathnames: Record<Tab, string> = {
+  pokedex: "/",
+  map: "/map",
+  "test-codes": "/test-codes",
+};
 
 const MapView = lazy(() =>
   import("./components/MapView").then((module) => ({ default: module.MapView })),
@@ -38,10 +52,10 @@ function normalizeToken(rawValue: string) {
 }
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<Tab>("pokedex");
-  const [isScannerOpen, setIsScannerOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [unlockedIds, setUnlockedIds] = useState<string[]>([]);
-  const [selectedEntry, setSelectedEntry] = useState<PokemonEntry | null>(null);
   const [scanStatus, setScanStatus] = useState<ScanStatus>({ kind: "idle" });
   const [manualCode, setManualCode] = useState("");
   const [resetArmed, setResetArmed] = useState(false);
@@ -57,6 +71,83 @@ export default function App() {
   const unlockedSet = useMemo(() => new Set(unlockedIds), [unlockedIds]);
   const completion = Math.round((unlockedIds.length / pokemonEntries.length) * 100);
   const allUnlocked = unlockedIds.length === pokemonEntries.length;
+  const selectedEntryId = searchParams.get("entry");
+  const selectedEntry =
+    pokemonEntries.find((entry) => entry.id === selectedEntryId) ?? null;
+  const isScannerOpen = searchParams.get("scanner") === "1";
+
+  if (!Object.values(tabPathnames).includes(location.pathname)) {
+    return <Navigate to="/" replace />;
+  }
+
+  const activeTab = (Object.entries(tabPathnames).find(
+    ([, pathname]) => pathname === location.pathname,
+  )?.[0] ?? "pokedex") as Tab;
+
+  function navigateWithOverlays(
+    pathname: string,
+    options?: {
+      entryId?: string | null;
+      scanner?: boolean;
+      replace?: boolean;
+    },
+  ) {
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (options?.entryId !== undefined) {
+      if (options.entryId) {
+        nextParams.set("entry", options.entryId);
+      } else {
+        nextParams.delete("entry");
+      }
+    }
+
+    if (options?.scanner !== undefined) {
+      if (options.scanner) {
+        nextParams.set("scanner", "1");
+      } else {
+        nextParams.delete("scanner");
+      }
+    }
+
+    const nextSearch = nextParams.toString();
+
+    navigate(
+      {
+        pathname,
+        search: nextSearch ? `?${nextSearch}` : "",
+      },
+      { replace: options?.replace },
+    );
+  }
+
+  function updateCurrentSearch(
+    options: {
+      entryId?: string | null;
+      scanner?: boolean;
+      replace?: boolean;
+    },
+  ) {
+    const nextParams = new URLSearchParams(searchParams);
+
+    if (options.entryId !== undefined) {
+      if (options.entryId) {
+        nextParams.set("entry", options.entryId);
+      } else {
+        nextParams.delete("entry");
+      }
+    }
+
+    if (options.scanner !== undefined) {
+      if (options.scanner) {
+        nextParams.set("scanner", "1");
+      } else {
+        nextParams.delete("scanner");
+      }
+    }
+
+    setSearchParams(nextParams, { replace: options.replace });
+  }
 
   function unlockFromRaw(rawValue: string) {
     const token = normalizeToken(rawValue);
@@ -70,8 +161,10 @@ export default function App() {
       return;
     }
 
-    setSelectedEntry(entry);
-    setActiveTab("pokedex");
+    navigateWithOverlays(tabPathnames.pokedex, {
+      entryId: entry.id,
+      scanner: false,
+    });
 
     if (unlockedSet.has(entry.id)) {
       setScanStatus({
@@ -86,7 +179,6 @@ export default function App() {
       kind: "success",
       message: `${entry.nickname} was added to the Pokedex.`,
     });
-    setIsScannerOpen(false);
   }
 
   function handleManualSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -104,15 +196,18 @@ export default function App() {
 
     setUnlockedIds([]);
     resetUnlockedIds();
-    setSelectedEntry(null);
     setScanStatus({ kind: "idle" });
     setResetArmed(false);
-    setIsScannerOpen(false);
+    updateCurrentSearch({
+      entryId: null,
+      scanner: false,
+      replace: true,
+    });
   }
 
   function openScanner() {
     setScanStatus({ kind: "idle" });
-    setIsScannerOpen(true);
+    updateCurrentSearch({ scanner: true });
   }
 
   function handleScannerError(message: string) {
@@ -145,20 +240,19 @@ export default function App() {
         </header>
 
         <nav className="tabbar" aria-label="Primary">
-          <button
-            className={activeTab === "pokedex" ? "is-active" : ""}
-            onClick={() => setActiveTab("pokedex")}
-            type="button"
+          <NavLink
+            className={({ isActive }) => (isActive ? "is-active" : "")}
+            to={tabPathnames.pokedex}
+            end
           >
             Pokedex
-          </button>
-          <button
-            className={activeTab === "map" ? "is-active" : ""}
-            onClick={() => setActiveTab("map")}
-            type="button"
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? "is-active" : "")}
+            to={tabPathnames.map}
           >
             Map
-          </button>
+          </NavLink>
         </nav>
 
         <main
@@ -197,7 +291,9 @@ export default function App() {
                     key={entry.id}
                     entry={entry}
                     unlocked={unlockedSet.has(entry.id)}
-                    onSelect={setSelectedEntry}
+                    onSelect={(pickedEntry) =>
+                      navigateWithOverlays(location.pathname, { entryId: pickedEntry.id })
+                    }
                   />
                 ))}
               </div>
@@ -219,7 +315,7 @@ export default function App() {
             </section>
           )}
 
-          {activeTab === "admin" && (
+          {activeTab === "test-codes" && (
             <section className="screen-panel">
               <div className="screen-panel__header">
                 <div>
@@ -250,19 +346,20 @@ export default function App() {
           onClick={openScanner}
           type="button"
         >
-          <span className="scanner-fab__core" />
-          <span>Scan</span>
+          <span className="scanner-fab__hinge" aria-hidden="true" />
+          <span className="scanner-fab__label">Scan</span>
         </button>
 
         <footer className="app-footer">
           <span className="footer-stamp">Updated: {LAST_UPDATED}</span>
-          <button
-            className="footer-link"
-            onClick={() => setActiveTab("admin")}
-            type="button"
-          >
-            Admin
-          </button>
+          <div className="footer-links">
+            <Link className="footer-link" to={tabPathnames["test-codes"]}>
+              Test Codes
+            </Link>
+            <a className="footer-link" href="/admin/index.html">
+              Editor
+            </a>
+          </div>
         </footer>
       </div>
 
@@ -270,12 +367,12 @@ export default function App() {
         <div className="modal-shell scanner-modal-shell" role="dialog" aria-modal="true">
           <div
             className="modal-shell__backdrop"
-            onClick={() => setIsScannerOpen(false)}
+            onClick={() => updateCurrentSearch({ scanner: false })}
           />
           <div className="modal-shell__panel scanner-modal-panel">
             <button
               className="scanner-overlay-close"
-              onClick={() => setIsScannerOpen(false)}
+              onClick={() => updateCurrentSearch({ scanner: false })}
               type="button"
             >
               Close
@@ -314,7 +411,7 @@ export default function App() {
       <PokedexDetail
         entry={selectedEntry}
         unlocked={selectedEntry ? unlockedSet.has(selectedEntry.id) : false}
-        onClose={() => setSelectedEntry(null)}
+        onClose={() => updateCurrentSearch({ entryId: null })}
       />
     </div>
   );

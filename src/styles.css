@@ -169,7 +169,7 @@ a {
   margin-bottom: 14px;
 }
 
-.tabbar button,
+.tabbar a,
 .reset-button,
 .manual-form button,
 .modal-close {
@@ -177,14 +177,16 @@ a {
   padding: 14px 16px;
   font-weight: 800;
   color: var(--ink);
+  text-align: center;
+  text-decoration: none;
 }
 
-.tabbar button {
+.tabbar a {
   background: linear-gradient(180deg, #f5f0e0 0%, #ded4bb 100%);
   border: 2px solid #7d7161;
 }
 
-.tabbar button.is-active {
+.tabbar a.is-active {
   background: linear-gradient(180deg, #81ddff 0%, #4eb5e5 100%);
 }
 
@@ -428,19 +430,61 @@ a {
   right: 22px;
   bottom: 22px;
   z-index: 700;
-  display: grid;
-  place-items: center;
-  gap: 6px;
-  width: 88px;
-  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 92px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #fff8ef 0%, #f2e1c3 100%);
+  background: linear-gradient(
+    180deg,
+    #cf2029 0 46%,
+    #223242 46% 54%,
+    #fff8ef 54% 100%
+  );
   border: 5px solid #263745;
   color: var(--ink);
   font-weight: 800;
+  overflow: hidden;
   box-shadow:
     0 16px 30px rgba(28, 18, 10, 0.25),
-    inset 0 4px 0 rgba(255, 255, 255, 0.85);
+    inset 0 4px 0 rgba(255, 255, 255, 0.35);
+}
+
+.scanner-fab__hinge {
+  position: absolute;
+  inset: auto auto 50% 50%;
+  width: 32px;
+  height: 32px;
+  transform: translate(-50%, 50%);
+  border-radius: 999px;
+  background: #fff8ef;
+  border: 6px solid var(--ink);
+  z-index: 1;
+}
+
+.scanner-fab__hinge::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 999px;
+  background: var(--blue);
+  border: 3px solid var(--ink);
+}
+
+.scanner-fab__label {
+  position: relative;
+  z-index: 2;
+  margin-top: 38px;
+  padding: 2px 8px 0;
+  border-radius: 999px;
+  background: rgba(255, 248, 239, 0.92);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
 .app-footer {
@@ -450,6 +494,14 @@ a {
   justify-content: center;
   margin-top: 18px;
   flex-wrap: wrap;
+}
+
+.footer-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .footer-stamp {
@@ -463,29 +515,12 @@ a {
 
 .footer-link {
   padding: 6px 10px;
+  border: 0;
   background: transparent;
   color: rgba(246, 240, 221, 0.82);
   font-size: 0.85rem;
   text-decoration: underline;
   text-underline-offset: 3px;
-}
-
-.scanner-fab__core {
-  width: 30px;
-  height: 30px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #d72a31 0 50%, #f6f0dd 50% 100%);
-  border: 4px solid var(--ink);
-  position: relative;
-}
-
-.scanner-fab__core::after {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border-radius: 999px;
-  background: var(--blue);
-  border: 2px solid var(--ink);
 }
 
 .modal-shell {

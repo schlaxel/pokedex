@@ -1,0 +1,17 @@
+{
+  "locationName": "Freiburg Minster",
+  "bio": "Always appears exactly when a plan needs charm, snacks, and one surprisingly effective pep talk.",
+  "funFacts": [
+    "Signature move: Group Chat Summon",
+    "Carries emergency festival glitter",
+    "Can navigate any city with 12% battery left"
+  ],
+  "rarity": "Legendary Wingman",
+  "name": "Michi",
+  "nickname": "Captain Confetti",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.849863,47.994802]}",
+  "qrToken": "captain-confetti",
+  "type": "Party",
+  "id": "001",
+  "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+}

@@ -1,0 +1,17 @@
+{
+  "id": "005",
+  "name": "Felix",
+  "nickname": "Snackachu",
+  "image": "https://images.unsplash.com/photo-1506795660198-e95c77602129?auto=format&fit=crop&w=900&q=80",
+  "bio": "Never arrives empty-handed and can locate the best late-night food options with supernatural precision.",
+  "funFacts": [
+    "Signature move: Crispy Crunch",
+    "Always knows the shortcut",
+    "Can convince anyone to order one more round"
+  ],
+  "type": "Electric",
+  "rarity": "Ultra Rare",
+  "locationName": "Bertoldsbrunnen",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8413,47.9971]}",
+  "qrToken": "snackachu"
+}

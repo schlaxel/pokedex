@@ -1,0 +1,17 @@
+{
+  "id": "003",
+  "name": "Timo",
+  "nickname": "DJ Thunderbeard",
+  "image": "https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=900&q=80",
+  "bio": "A mysterious rhythm-type creature capable of improving any mood with one song and a terrible dance move.",
+  "funFacts": [
+    "Signature move: Bass Drop",
+    "Weakness: Quiet evenings",
+    "Immune to awkward silences"
+  ],
+  "type": "Sound",
+  "rarity": "Mythic Bro",
+  "locationName": "Augustinerplatz",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8464,47.9961]}",
+  "qrToken": "dj-thunderbeard"
+}

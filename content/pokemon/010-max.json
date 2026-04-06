@@ -1,0 +1,17 @@
+{
+  "id": "010",
+  "name": "Max",
+  "nickname": "Final Bossman",
+  "image": "https://images.unsplash.com/photo-1500048993959-d6c883fd6e70?auto=format&fit=crop&w=900&q=80",
+  "bio": "The late-game encounter: impossible to miss, impossible to predict, and always worth the build-up.",
+  "funFacts": [
+    "Signature move: Grand Entrance",
+    "Unlocks the finale atmosphere",
+    "Best encountered with full team assembled"
+  ],
+  "type": "Dragon",
+  "rarity": "Boss Encounter",
+  "locationName": "Schlossberg Biergarten",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8843,48.0009]}",
+  "qrToken": "final-bossman"
+}

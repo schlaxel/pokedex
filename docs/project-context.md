@@ -11,7 +11,7 @@ The idea:
 - When he finds a friend, he scans that friend's QR code.
 - The scan unlocks that friend in the Pokedex and reveals a fun profile entry.
 
-The app is intentionally lightweight and frontend-only for now.
+The app is intentionally lightweight and frontend-only, but it now includes a Git-backed content editor through Decap CMS.
 
 ## Current Tech Stack
 
@@ -19,19 +19,25 @@ The app is intentionally lightweight and frontend-only for now.
 - React
 - Vite
 - TypeScript
+- Decap CMS for content editing
 - Leaflet + react-leaflet for the map
 - ZXing browser package for QR scanning
 - `qrcode` package for generating testing QR codes in the admin area
 
 ## Current Product Shape
 
-The app currently has a tab-based layout with three tabs:
+The app currently has a tab-based layout with:
 
 - `Pokedex`
 - `Map`
-- `Admin`
 
 There is also a floating `Scan` button that opens the scanner in a modal.
+A footer exposes:
+
+- `Test Codes` inside the app
+- `Editor` at `/admin/`
+
+Navigation is now route-based, so browser back/forward works for tabs and overlay states.
 
 ## What Is Already Implemented
 
@@ -55,16 +61,24 @@ There is also a floating `Scan` button that opens the scanner in a modal.
 - Opens from floating action button
 - Attempts to use the device camera for QR scanning
 - Supports manual code entry as fallback
-- Supports image upload fallback for QR testing
 - Parses both:
   - `pokedex://unlock/<token>`
   - URLs with `?unlock=<token>`
 
-### Admin tab
+### Test codes view
 
 - Displays one generated QR code per Pokemon
 - Shows token and payload for each entry
 - Useful for local testing without printing physical QR codes yet
+
+### Decap CMS
+
+- Available at `/admin/`
+- Edits Pokemon content through Git-backed forms
+- Supports image fields
+- Uses the built-in Decap `map` widget for location editing
+- Supports local editing through the Static CMS proxy server via `bun run cms`
+- Can create and delete Pokemon entries in the collection
 
 ### Persistence
 
@@ -73,7 +87,11 @@ There is also a floating `Scan` button that opens the scanner in a modal.
 
 ## Current Data Model
 
-Main source:
+Main content source:
+
+- `content/pokemon/*.json`
+
+Runtime adapter:
 
 - `src/data/pokemon.ts`
 
@@ -87,20 +105,29 @@ Each Pokemon entry currently contains:
 - `funFacts`
 - `type`
 - `rarity`
-- `coordinates`
+- `location` (GeoJSON string)
 - `locationName`
 - `qrToken`
 
+At runtime the app parses the GeoJSON `location` value back into the `coordinates` shape used by the UI.
+
 There are currently 10 sample entries with placeholder friend content and Freiburg im Breisgau coordinates.
+The UI count and map marker count are derived from the content collection, so the app can handle more or fewer entries.
 
 ## Important Current Files
 
 - `src/App.tsx`
   - main app shell, tabs, modal flow, unlock logic
 - `src/data/pokemon.ts`
-  - friend/Pokemon data
+  - content adapter that loads Pokemon JSON files
+- `content/pokemon/*.json`
+  - CMS-managed Pokemon entries
+- `public/admin/config.yml`
+  - Decap CMS collection config
+- `public/admin/index.html`
+  - Decap CMS admin entrypoint
 - `src/components/ScannerPanel.tsx`
-  - camera scanning, upload fallback, manual error handling
+  - camera scanning and manual error handling
 - `src/components/AdminQrCard.tsx`
   - QR code generation for admin/testing
 - `src/components/MapView.tsx`
@@ -120,7 +147,13 @@ There are currently 10 sample entries with placeholder friend content and Freibu
 
 - Camera scanning generally needs HTTPS on phones.
 - On desktop localhost this is usually less strict.
-- The app includes manual input and image upload fallback because phone camera testing over plain LAN HTTP is unreliable.
+- The app includes manual input because phone camera testing over plain LAN HTTP is unreliable.
+
+### CMS on Netlify
+
+- Decap is configured for `git-gateway`
+- Netlify needs `Identity` and `Git Gateway` enabled for production editing
+- The local CMS developer experience uses the Static CMS proxy server at `http://localhost:8081/api/v1`
 
 ### Local development
 
@@ -179,11 +212,11 @@ bun run dev -- --host 0.0.0.0 --port 5173
 
 Recommended practical path for this project:
 
-1. Finalize the 10 real friend entries in `src/data/pokemon.ts`
-2. Use the current `Admin` tab to verify all tokens and unlock behavior
-3. Deploy the site to a simple HTTPS host
-4. Test QR scanning on the actual phone
-5. Hide or remove admin/testing surfaces before the final event version
+1. Finalize the 10 real friend entries in `content/pokemon/*.json` or `/admin/`
+2. Use the current `Test Codes` view to verify all tokens and unlock behavior
+3. Enable Netlify Identity + Git Gateway for editor access
+4. Deploy the site to a simple HTTPS host
+5. Test QR scanning on the actual phone
 
 ## Open Questions For Later
 

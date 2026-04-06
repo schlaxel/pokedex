@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend:
+  url: http://localhost:8081/api/v1
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: pokemon
+    label: Pokemon
+    label_singular: Pokemon
+    folder: content/pokemon
+    create: true
+    delete: true
+    slug: "{{fields.id}}-{{slug}}"
+    extension: json
+    format: json
+    identifier_field: nickname
+    summary: "{{id}} - {{nickname}}"
+    fields:
+      - { label: ID, name: id, widget: string, hint: "Required and should stay unique. Use a padded number like 011 or 012.", pattern: ["^[0-9]{3,}$", "Use numeric IDs like 001, 010, 011."] }
+      - { label: Name, name: name, widget: string }
+      - { label: Nickname, name: nickname, widget: string }
+      - { label: Bio, name: bio, widget: text, default: "" }
+      - label: Fun Facts
+        name: funFacts
+        widget: list
+        summary: "{{fields.fact}}"
+        default:
+          - ""
+        field: { label: Fact, name: fact, widget: string }
+      - { label: Type, name: type, widget: string, default: "Normal" }
+      - { label: Rarity, name: rarity, widget: string, default: "Rare Spawn" }
+      - { label: Location Name, name: locationName, widget: string, default: "Freiburg im Breisgau" }
+      - { label: Map Location, name: location, widget: map, type: Point, decimals: 6, default: "{\"type\":\"Point\",\"coordinates\":[7.8522,47.9959]}", hint: "Pick the Pokemon location directly on the map." }
+      - { label: QR Token, name: qrToken, widget: string, hint: "Required and must stay unique unless you also regenerate the QR code.", pattern: ["^[a-z0-9-]+$", "Use lowercase letters, numbers, and hyphens only."] }
+      - { label: Image, name: image, widget: image, required: false, media_library: { config: { multiple: false } } }

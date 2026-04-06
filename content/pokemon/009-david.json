@@ -1,0 +1,17 @@
+{
+  "locationName": "Rathausplatz",
+  "bio": "Can spot the next destination, the next joke, and the next problem before anyone else notices it.",
+  "funFacts": [
+    "Signature move: Bro Locator",
+    "Never loses the group",
+    "Gets a passive bonus near train stations"
+  ],
+  "rarity": "Epic",
+  "name": "David",
+  "nickname": "Radar Bro",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.894378,47.984569]}",
+  "qrToken": "radar-bro",
+  "type": "Steel",
+  "id": "009",
+  "image": "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=900&q=80"
+}
