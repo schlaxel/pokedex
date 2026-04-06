@@ -1,17 +1,17 @@
 {
-  "id": "002",
-  "name": "Jonas",
-  "nickname": "Sir Sidequest",
-  "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80",
+  "locationName": "Martinstor",
   "bio": "Looks calm, but can turn a coffee stop into a full-scale adventure arc in under three minutes.",
   "funFacts": [
     "Signature move: Unexpected Detour",
     "Knows at least one bartender everywhere",
     "Power spikes after first espresso"
   ],
-  "type": "Chaos",
   "rarity": "Elite Four Friend",
-  "locationName": "Martinstor",
-  "location": "{\"type\":\"Point\",\"coordinates\":[7.8426,47.9977]}",
-  "qrToken": "sir-sidequest"
+  "name": "Jonas",
+  "nickname": "Sir Sidequest",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.856041,47.979545]}",
+  "qrToken": "sir-sidequest",
+  "type": "Chaos",
+  "id": "002",
+  "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=900&q=80"
 }
