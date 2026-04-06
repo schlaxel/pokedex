@@ -238,7 +238,7 @@ export default function App() {
           </div>
         </header>
 
-        <nav className="tabbar" aria-label="Primary">
+        <nav className="tabbar tabbar--top" aria-label="Primary">
           <NavLink
             className={({ isActive }) => (isActive ? "is-active" : "")}
             to={tabPathnames.pokedex}
@@ -266,22 +266,15 @@ export default function App() {
                   <p className="screen-panel__label">Registry</p>
                   <h2>Friend Pokemon</h2>
                 </div>
-                <button
-                  className={`reset-button ${resetArmed ? "is-danger" : ""}`}
-                  onClick={handleResetGesture}
-                  type="button"
-                >
-                  {resetArmed ? "Tap again to reset" : "Reset"}
-                </button>
               </div>
 
               <div className="status-row">
                 <div className="status-pill">
                   Completion <strong>{completion}%</strong>
                 </div>
-                <div className="status-pill">
-                  {allUnlocked ? "All Pokemon registered" : "Grey entries are still hidden"}
-                </div>
+                {allUnlocked && (
+                  <div className="status-pill">All Pokemon registered</div>
+                )}
               </div>
 
               <div className="pokedex-grid">
@@ -295,6 +288,16 @@ export default function App() {
                     }
                   />
                 ))}
+              </div>
+
+              <div className="screen-panel__actions">
+                <button
+                  className={`reset-button ${resetArmed ? "is-danger" : ""}`}
+                  onClick={handleResetGesture}
+                  type="button"
+                >
+                  {resetArmed ? "Tap again to reset" : "Reset progress"}
+                </button>
               </div>
             </section>
           )}

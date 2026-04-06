@@ -74,12 +74,22 @@ a {
     0 28px 60px rgba(72, 4, 8, 0.34);
 }
 
+.tabbar {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tabbar--top {
+  margin-bottom: 18px;
+}
+
 .pokedex-header {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 16px;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .pokedex-lights {
@@ -162,13 +172,6 @@ a {
   font-size: 1.65rem;
 }
 
-.tabbar {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
 .tabbar a,
 .reset-button,
 .manual-form button,
@@ -229,6 +232,14 @@ a {
 
 .status-row {
   margin: 12px 0 16px;
+}
+
+.screen-panel__actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 2px solid rgba(32, 48, 62, 0.12);
 }
 
 .status-pill {
@@ -706,6 +717,10 @@ a {
   .pokedex-shell {
     padding: 10px;
     border-radius: 20px;
+  }
+
+  .tabbar--top {
+    margin-bottom: 12px;
   }
 
   .pokedex-header {
