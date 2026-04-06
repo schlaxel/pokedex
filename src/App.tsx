@@ -228,7 +228,6 @@ export default function App() {
             <span className="pokedex-lights__small pokedex-lights__small--green" />
           </div>
           <div className="pokedex-header__copy">
-            <p className="pokedex-header__label">Digital Monster Index</p>
             <h1>Pokedex</h1>
           </div>
           <div className="pokedex-progress">
