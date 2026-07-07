@@ -1,20 +1,20 @@
 {
-  "locationName": "Polizeirevier Nord",
+  "locationName": "Alabastia",
   "height": "1,85m",
-  "bio": "Professor Eichekläs ist ein erfahrenes Professor-Pokemon mit beeindruckenden KP, stabiler Defensive und einem erschreckend entspannten Verhältnis zu Aufsichtspflichten. Er verteilt Wissen, Motivationssprüche und fragwürdige Reiseempfehlungen, als gäbe es keinerlei pädagogische Konsequenzen.",
+  "bio": "Professor Eichelkäs ist ein erfahrenes Professor-Pokemon mit beeindruckenden KP, stabiler Defensive und einem erschreckend entspannten Verhältnis zu Aufsichtspflichten. Er verteilt Wissen, Motivationssprüche und fragwürdige Reiseempfehlungen, als gäbe es keinerlei pädagogische Konsequenzen.",
   "funFacts": [
     "Schickt regelmäßig Zehnjährige alleine los und nennt das dann Forschung.",
-    "Weiß alles über Pokemon, aber auffällig wenig über Fürsorgepflicht.",
-    "Wird kurz nervös, sobald jemand nach Verantwortungsbewusstsein fragt."
+    "Weiß alles über Pokemon, aber auffällig wenig über Fürsorgepflicht."
   ],
   "name": "Professor Eichelkäs",
-  "location": "{\"type\":\"Point\",\"coordinates\":[7.836334,47.987465]}",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.839344,47.99652]}",
   "weight": "86 kg",
   "type": "Normal",
   "id": "000",
   "image": "/uploads/whatsapp-bild.jpeg",
   "weaknesses": [
-    "Verantwortungsbewusstsein (schickt regelmäßig 10 jährige Kinder alleine auf eine Weltreise)"
+    "Müdigkeit in Verbindung mit Toiletten",
+    "Russische Maultiere"
   ],
   "stats": {
     "hp": 199,
