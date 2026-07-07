@@ -1,18 +1,18 @@
 {
-  "id": "049",
-  "name": "Giftgeist",
-  "image": "/uploads/giftgeist.png",
+  "locationName": "Apotheke Ferdinand-Weiss-Strasse",
+  "height": "1,65 m",
   "bio": "Ein giftiges Pokemon mit ruhigem Blick, starker Defensive und einer auffallenden Schwaeche gegen Wasser.",
   "funFacts": [
     "Fuehlt sich zwischen Dunst, Neon und duesteren Ecken besonders wohl.",
     "Wirkt entspannt, trifft aber haerter als erwartet.",
     "Spawned am liebsten dort, wo Heilmittel und Nebenwirkungen nah beieinanderliegen."
   ],
-  "type": "Gift",
-  "height": "1,65 m",
+  "name": "Giftgeist",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.829166,47.996983]}",
   "weight": "62 kg",
-  "locationName": "Apotheke Ferdinand-Weiss-Strasse",
-  "location": "{\"type\":\"Point\",\"coordinates\":[7.8358,47.9896]}",
+  "type": "Gift",
+  "id": "049",
+  "image": "/uploads/giftgeist.png",
   "weaknesses": [
     "Wasser"
   ],
