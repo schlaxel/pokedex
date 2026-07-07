@@ -361,7 +361,18 @@ a {
 }
 
 .pokedex-card__content {
-  padding: 12px 4px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 104px;
+  padding: 14px 6px 4px;
+}
+
+.pokedex-card__index,
+.pokedex-card__name,
+.pokedex-card__type {
+  margin: 0;
 }
 
 .pokedex-card h3,
@@ -369,9 +380,14 @@ a {
   margin: 4px 0;
 }
 
-.pokedex-card p:last-child {
-  margin-bottom: 0;
+.pokedex-card__name {
+  font-size: 1.12rem;
+  line-height: 1.08;
+}
+
+.pokedex-card__type {
   color: var(--ink-soft);
+  font-size: 0.95rem;
 }
 
 .screen-panel .leaflet-container {
@@ -880,42 +896,6 @@ a {
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.85);
 }
 
-.app-footer {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  justify-content: center;
-  margin-top: 18px;
-  flex-wrap: wrap;
-}
-
-.footer-links {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer-stamp {
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(246, 240, 221, 0.14);
-  color: #fff8ef;
-  font-size: 0.82rem;
-  font-weight: 700;
-}
-
-.footer-link {
-  padding: 6px 10px;
-  border: 0;
-  background: transparent;
-  color: rgba(246, 240, 221, 0.82);
-  font-size: 0.85rem;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
 .modal-shell {
   position: fixed;
   inset: 0;
@@ -1352,5 +1332,11 @@ a {
     bottom: 16px;
     width: 78px;
     height: 78px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pokedex-grid {
+    grid-template-columns: 1fr;
   }
 }

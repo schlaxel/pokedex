@@ -26,8 +26,12 @@ export function PokedexCard({
       </div>
       <div className="pokedex-card__content">
         <p className="pokedex-card__index">#{entry.id.toUpperCase()}</p>
-        <h3>{unlocked ? entry.name : "Unknown Pokemon"}</h3>
-        <p>{unlocked ? entry.type : "Scan the QR code to reveal this friend."}</p>
+        <h3 className="pokedex-card__name">
+          {unlocked ? entry.name : "Unknown Pokemon"}
+        </h3>
+        <p className="pokedex-card__type">
+          {unlocked ? entry.type : "Scan the QR code to reveal this friend."}
+        </p>
       </div>
     </button>
   );

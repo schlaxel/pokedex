@@ -10,6 +10,10 @@ const icon = L.divIcon({
   iconAnchor: [14, 14],
 });
 
+function getPrimaryType(type: string) {
+  return type.split("/")[0]?.trim() ?? type;
+}
+
 type MapViewProps = {
   entries: PokemonEntry[];
 };
@@ -34,14 +38,8 @@ export function MapView({ entries }: MapViewProps) {
           icon={icon}
         >
           <Popup>
-            <span>Typ: {entry.type}</span>
+            <span>Typ: {getPrimaryType(entry.type)}</span>
             <br />
-            {entry.locationName ? (
-              <>
-                {entry.locationName}
-                <br />
-              </>
-            ) : null}
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${entry.coordinates.lat},${entry.coordinates.lng}`}
               target="_blank"

@@ -21,7 +21,6 @@ import type { ScanStatus } from "./types";
 
 type Tab = "pokedex" | "map" | "test-codes";
 
-const LAST_UPDATED = "2026-04-06 02:43";
 const companionPathname = "/companions";
 const tabPathnames: Record<Tab, string> = {
   pokedex: "/",
@@ -106,6 +105,7 @@ export default function App() {
     pokemonEntries.find((entry) => entry.id === companionEntryId) ?? null;
   const isScannerOpen = searchParams.get("scanner") === "1";
   const isCompanionRoute = location.pathname === companionPathname;
+  const mainBackHref = previewParam ? `/?preview=${encodeURIComponent(previewParam)}` : "/";
 
   useEffect(() => {
     if (!companionEntryId) {
@@ -247,7 +247,7 @@ export default function App() {
                 <strong>{pokemonEntries.length}</strong>
               </div>
               {companionEntry ? (
-                <Link className="pokedex-header__back-link" to={companionPathname}>
+                <Link className="pokedex-header__back-link" to={mainBackHref}>
                   Zurück
                 </Link>
               ) : null}
@@ -324,7 +324,7 @@ export default function App() {
             ) : (
               <CompanionEntryDetail
                 entry={companionEntry}
-                backHref={companionPathname}
+                backHref={mainBackHref}
               />
             )}
           </main>
@@ -481,21 +481,6 @@ export default function App() {
           <span className="scanner-fab__hinge" aria-hidden="true" />
           <span className="scanner-fab__label">Scan</span>
         </button>
-
-        <footer className="app-footer">
-          <span className="footer-stamp">Updated: {LAST_UPDATED}</span>
-          <div className="footer-links">
-            <Link className="footer-link" to={tabPathnames["test-codes"]}>
-              Test Codes
-            </Link>
-            <Link className="footer-link" to={companionPathname}>
-              Uebersichtsseite
-            </Link>
-            <a className="footer-link" href="/admin/index.html">
-              Editor
-            </a>
-          </div>
-        </footer>
       </div>
 
       {isScannerOpen && (
