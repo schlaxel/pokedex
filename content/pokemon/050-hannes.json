@@ -1,16 +1,18 @@
 {
-  "id": "050",
-  "name": "Hannes",
-  "image": "/uploads/hannes.png",
+  "locationName": "Siegesstraße",
+  "height": "1,75 m",
   "bio": "Ein seltenes Geiler-Typ-Pokemon mit minimalen Kampfwerten, aber maximaler Praesenz, sobald eine Kamera in der Naehe ist.",
   "funFacts": [
     "Taucht bevorzugt in Gruppenfotos und Nachtschwarm-Situationen auf.",
     "Wird bei Mathe-Aufgaben schlagartig instabil.",
     "Braucht keinen Kartenpunkt, um im Pokedex aufzufallen."
   ],
-  "type": "Geiler Typ",
-  "height": "1,75 m",
+  "name": "Hannes",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.820898,48.001617]}",
   "weight": "70 kg",
+  "type": "Geiler Typ",
+  "id": "050",
+  "image": "/uploads/hannes.png",
   "weaknesses": [
     "Mathe du weißt"
   ],
