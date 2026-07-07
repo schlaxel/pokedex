@@ -1,20 +1,21 @@
 {
-  "id": "047",
-  "name": "Bierlexo",
-  "nickname": "Bierlexo",
-  "image": "/uploads/bierlexo.png",
+  "locationName": "Alt Freiburg",
+  "height": "1,72 m",
   "bio": "Ein massives Wasser-und-Bier-Pokemon mit stabiler Defensive und erstaunlich hoher Trefferquote in jeder Runde.",
   "funFacts": [
     "Erscheint bevorzugt dort, wo gerade angestossen wird.",
     "Bleibt erstaunlich standfest, bis ploetzlich der Kater einsetzt.",
     "Hat in Alt Freiburg eine besonders hohe Spawn-Rate."
   ],
-  "type": "Wasser/Bier",
   "rarity": "Tresen-Titan",
-  "height": "1,72 m",
+  "name": "Bierlexo",
+  "nickname": "Bierlexo",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.837115,47.995101]}",
+  "qrToken": "bierlexo",
   "weight": "102 kg",
-  "locationName": "Alt Freiburg",
-  "location": "{\"type\":\"Point\",\"coordinates\":[7.8498,47.9959]}",
+  "type": "Wasser/Bier",
+  "id": "047",
+  "image": "/uploads/bierlexo.png",
   "weaknesses": [
     "Gras",
     "Kater"
@@ -23,6 +24,5 @@
     "hp": 67,
     "attack": 80,
     "defense": 120
-  },
-  "qrToken": "bierlexo"
+  }
 }
