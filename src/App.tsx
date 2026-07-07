@@ -180,7 +180,7 @@ export default function App() {
     if (unlockedSet.has(entry.id)) {
       setScanStatus({
         kind: "success",
-        message: `${entry.nickname} is already registered.`,
+        message: `${entry.name} is already registered.`,
       });
       return;
     }
@@ -188,7 +188,7 @@ export default function App() {
     setUnlockedIds((currentIds) => [...currentIds, entry.id]);
     setScanStatus({
       kind: "success",
-      message: `${entry.nickname} was added to the Pokedex.`,
+      message: `${entry.name} was added to the Pokedex.`,
     });
   }
 
@@ -279,11 +279,11 @@ export default function App() {
                       <img
                         className="companion-list__image"
                         src={entry.image}
-                        alt={entry.nickname}
+                        alt={entry.name}
                       />
                       <div className="companion-list__copy">
                         <p className="pokedex-card__index">#{entry.id}</p>
-                        <h3>{entry.nickname}</h3>
+                        <h3>{entry.name}</h3>
                         <span className="companion-list__location">
                           <MapPin aria-hidden="true" size={16} strokeWidth={2.25} />
                           <span>{entry.locationName ?? "Kein Standort"}</span>
@@ -307,11 +307,11 @@ export default function App() {
                       <img
                         className="companion-list__image"
                         src={entry.image}
-                        alt={entry.nickname}
+                        alt={entry.name}
                       />
                       <div className="companion-list__copy">
                         <p className="pokedex-card__index">#{entry.id}</p>
-                        <h3>{entry.nickname}</h3>
+                        <h3>{entry.name}</h3>
                         <span className="companion-list__location">
                           <MapPin aria-hidden="true" size={16} strokeWidth={2.25} />
                           <span>{entry.locationName ?? "Kein Standort"}</span>

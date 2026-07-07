@@ -24,11 +24,10 @@ export function PokedexDetail({
         </button>
         {unlocked ? (
           <>
-            <img className="detail-sheet__image" src={entry.image} alt={entry.nickname} />
+            <img className="detail-sheet__image" src={entry.image} alt={entry.name} />
             <div className="detail-sheet__header">
               <p>#{entry.id.toUpperCase()}</p>
-              <h3>{entry.nickname}</h3>
-              <p>{entry.name}</p>
+              <h3>{entry.name}</h3>
             </div>
             <div className="detail-sheet__meta">
               <span>{entry.type}</span>

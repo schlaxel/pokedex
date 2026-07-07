@@ -1,6 +1,7 @@
 {
-  "locationName": "Eschholzpark",
-  "height": "1,8 m",
+  "id": "011",
+  "name": "Kiloflor",
+  "image": "/uploads/kiloflor.png",
   "bio": "Ein massives Pflanzen-Pokemon mit beeindruckender Verteidigung, wenig Angst und einer auffallenden Unvertraglichkeit gegen Gluten und Feuer.",
   "funFacts": [
     "Steckt viel ein und bleibt trotzdem erstaunlich entspannt.",
@@ -8,14 +9,12 @@
     "Sollte besser nicht in die Nahe von Pizzaofen geraten."
   ],
   "rarity": "Defensiv-Tank",
-  "name": "Kiloflor",
-  "nickname": "Kiloflor",
+  "locationName": "Eschholzpark",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.830111,47.998958]}",
   "qrToken": "kiloflor",
+  "height": "1,8 m",
   "weight": "85 kg",
   "type": "Pflanze/Gras",
-  "id": "011",
-  "image": "/uploads/kiloflor.png",
   "weaknesses": [
     "Gluten",
     "Feuer"

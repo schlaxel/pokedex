@@ -40,7 +40,6 @@ export const pokemonEntries: PokemonEntry[] = pokemonContentEntries
   .map((entry) => ({
     id: entry.id,
     name: entry.name,
-    nickname: entry.nickname,
     image: entry.image,
     bio: entry.bio,
     funFacts: entry.funFacts,

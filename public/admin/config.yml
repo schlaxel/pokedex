@@ -18,12 +18,11 @@ collections:
     slug: "{{fields.id}}-{{slug}}"
     extension: json
     format: json
-    identifier_field: nickname
-    summary: "{{id}} - {{nickname}}"
+    identifier_field: name
+    summary: "{{id}} - {{name}}"
     fields:
       - { label: ID, name: id, widget: string, hint: "Required and should stay unique. Use a padded number like 011 or 012.", pattern: ["^[0-9]{3,}$", "Use numeric IDs like 001, 010, 011."] }
       - { label: Name, name: name, widget: string }
-      - { label: Nickname, name: nickname, widget: string }
       - { label: Bio, name: bio, widget: text, default: "" }
       - label: Fun Facts
         name: funFacts

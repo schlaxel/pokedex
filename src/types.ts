@@ -12,7 +12,6 @@ export type PokemonStats = {
 export type PokemonEntry = {
   id: string;
   name: string;
-  nickname: string;
   image: string;
   bio: string;
   funFacts: string[];
@@ -30,7 +29,6 @@ export type PokemonEntry = {
 export type PokemonContentEntry = {
   id: string;
   name: string;
-  nickname: string;
   image: string;
   bio: string;
   funFacts: string[];

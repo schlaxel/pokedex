@@ -48,8 +48,7 @@ export function AdminQrCard({ entry }: AdminQrCardProps) {
       <div className="admin-card__header">
         <div>
           <p className="pokedex-card__index">#{entry.id}</p>
-          <h3>{entry.nickname}</h3>
-          <p>{entry.name}</p>
+          <h3>{entry.name}</h3>
         </div>
         <span className="admin-card__type">{entry.type}</span>
       </div>
@@ -59,7 +58,7 @@ export function AdminQrCard({ entry }: AdminQrCardProps) {
           <img
             className="admin-card__qr"
             src={qrDataUrl}
-            alt={`QR code for ${entry.nickname}`}
+            alt={`QR code for ${entry.name}`}
           />
         ) : (
           <div className="admin-card__qr admin-card__qr--loading">Generating QR...</div>

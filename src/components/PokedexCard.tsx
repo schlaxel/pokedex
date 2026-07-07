@@ -21,13 +21,13 @@ export function PokedexCard({
         <img
           className="pokedex-card__image"
           src={unlocked ? entry.image : "https://placehold.co/400x400/13233a/F3C933?text=%3F"}
-          alt={unlocked ? entry.nickname : "Locked Pokemon"}
+          alt={unlocked ? entry.name : "Locked Pokemon"}
         />
       </div>
       <div className="pokedex-card__content">
         <p className="pokedex-card__index">#{entry.id.toUpperCase()}</p>
-        <h3>{unlocked ? entry.nickname : "Unknown Pokemon"}</h3>
-        <p>{unlocked ? entry.name : "Scan the QR code to reveal this friend."}</p>
+        <h3>{unlocked ? entry.name : "Unknown Pokemon"}</h3>
+        <p>{unlocked ? entry.type : "Scan the QR code to reveal this friend."}</p>
       </div>
     </button>
   );

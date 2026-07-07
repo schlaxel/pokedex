@@ -116,14 +116,14 @@ export function CompanionEntryDetail({ entry, backHref }: CompanionEntryDetailPr
           type="button"
           aria-label={
             isMobileZoomEnabled
-              ? `${entry.nickname} in voller Größe öffnen`
-              : `${entry.nickname} Bild`
+              ? `${entry.name} in voller Größe öffnen`
+              : `${entry.name} Bild`
           }
         >
           <img
             className="companion-detail__image"
             src={entry.image}
-            alt={entry.nickname}
+            alt={entry.name}
           />
           {isMobileZoomEnabled ? (
             <span className="companion-detail__image-hint" aria-hidden="true">
@@ -136,7 +136,7 @@ export function CompanionEntryDetail({ entry, backHref }: CompanionEntryDetailPr
       <div className="companion-detail__card">
         <div className="companion-detail__title">
           <p className="pokedex-card__index">#{entry.id}</p>
-          <h2>{entry.nickname}</h2>
+          <h2>{entry.name}</h2>
         </div>
 
         <div className="detail-sheet__meta companion-detail__meta">
@@ -261,7 +261,7 @@ export function CompanionEntryDetail({ entry, backHref }: CompanionEntryDetailPr
               <img
                 className="admin-card__qr companion-detail__qr"
                 src={qrDataUrl}
-                alt={`QR code for ${entry.nickname}`}
+                alt={`QR code for ${entry.name}`}
               />
             ) : (
               <div className="admin-card__qr admin-card__qr--loading">Generating QR...</div>
@@ -298,7 +298,7 @@ export function CompanionEntryDetail({ entry, backHref }: CompanionEntryDetailPr
           <img
             className="companion-image-modal__image"
             src={entry.image}
-            alt={entry.nickname}
+            alt={entry.name}
           />
         </div>
       ) : null}
