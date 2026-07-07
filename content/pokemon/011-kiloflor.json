@@ -1,18 +1,18 @@
 {
-  "id": "011",
-  "name": "Kiloflor",
-  "image": "/uploads/kiloflor.png",
+  "locationName": "Eschholzpark",
+  "height": "1,8 m",
   "bio": "Ein massives Pflanzen-Pokemon mit beeindruckender Verteidigung, wenig Angst und einer auffallenden Unvertraglichkeit gegen Gluten und Feuer.",
   "funFacts": [
     "Steckt viel ein und bleibt trotzdem erstaunlich entspannt.",
     "Ist eher Panzer als Sprinter.",
     "Sollte besser nicht in die Nahe von Pizzaofen geraten."
   ],
-  "locationName": "Eschholzpark",
-  "location": "{\"type\":\"Point\",\"coordinates\":[7.830111,47.998958]}",
-  "height": "1,8 m",
+  "name": "Kiloflor",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.829762,47.999024]}",
   "weight": "85 kg",
   "type": "Pflanze/Gras",
+  "id": "011",
+  "image": "/uploads/kiloflor.png",
   "weaknesses": [
     "Gluten",
     "Feuer"
