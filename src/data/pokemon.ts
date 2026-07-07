@@ -10,6 +10,10 @@ const pokemonContentEntries = Object.values(pokemonContentModules).sort((left, r
 );
 
 function parseCoordinates(entry: PokemonContentEntry) {
+  if (!entry.location) {
+    return undefined;
+  }
+
   try {
     const geoJson = JSON.parse(entry.location) as {
       type?: string;
@@ -29,22 +33,37 @@ function parseCoordinates(entry: PokemonContentEntry) {
     console.warn(`Invalid location for Pokemon ${entry.id}`, error);
   }
 
-  return { lat: 47.9959, lng: 7.8522 };
+  return undefined;
 }
 
-export const pokemonEntries: PokemonEntry[] = pokemonContentEntries.map((entry) => ({
-  id: entry.id,
-  name: entry.name,
-  nickname: entry.nickname,
-  image: entry.image,
-  bio: entry.bio,
-  funFacts: entry.funFacts,
-  type: entry.type,
-  rarity: entry.rarity,
-  coordinates: parseCoordinates(entry),
-  locationName: entry.locationName,
-  qrToken: entry.qrToken,
-}));
+export const pokemonEntries: PokemonEntry[] = pokemonContentEntries
+  .map((entry) => ({
+    id: entry.id,
+    name: entry.name,
+    nickname: entry.nickname,
+    image: entry.image,
+    bio: entry.bio,
+    funFacts: entry.funFacts,
+    type: entry.type,
+    rarity: entry.rarity,
+    height: entry.height,
+    weight: entry.weight,
+    weaknesses: entry.weaknesses,
+    stats: entry.stats,
+    coordinates: parseCoordinates(entry),
+    locationName: entry.locationName,
+    qrToken: entry.qrToken,
+  }))
+  .sort((left, right) => {
+    const leftHasCoordinates = Boolean(left.coordinates);
+    const rightHasCoordinates = Boolean(right.coordinates);
+
+    if (leftHasCoordinates !== rightHasCoordinates) {
+      return leftHasCoordinates ? -1 : 1;
+    }
+
+    return left.id.localeCompare(right.id);
+  });
 
 export const tokenToEntry = new Map(
   pokemonEntries.map((entry) => [entry.qrToken, entry]),

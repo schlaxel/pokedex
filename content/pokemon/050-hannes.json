@@ -1,0 +1,25 @@
+{
+  "id": "050",
+  "name": "Hannes",
+  "nickname": "Hannes",
+  "image": "/uploads/hannes.png",
+  "bio": "Ein seltenes Geiler-Typ-Pokemon mit minimalen Kampfwerten, aber maximaler Praesenz, sobald eine Kamera in der Naehe ist.",
+  "funFacts": [
+    "Taucht bevorzugt in Gruppenfotos und Nachtschwarm-Situationen auf.",
+    "Wird bei Mathe-Aufgaben schlagartig instabil.",
+    "Braucht keinen Kartenpunkt, um im Pokedex aufzufallen."
+  ],
+  "type": "Geiler Typ",
+  "rarity": "Selfie-Spawn",
+  "height": "1,75 m",
+  "weight": "70 kg",
+  "weaknesses": [
+    "Mathe du weißt"
+  ],
+  "stats": {
+    "hp": 1,
+    "attack": 6,
+    "defense": 1
+  },
+  "qrToken": "hannes"
+}

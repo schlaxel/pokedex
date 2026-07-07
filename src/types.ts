@@ -3,6 +3,12 @@ export type Coordinates = {
   lng: number;
 };
 
+export type PokemonStats = {
+  hp?: number;
+  attack?: number;
+  defense?: number;
+};
+
 export type PokemonEntry = {
   id: string;
   name: string;
@@ -12,8 +18,12 @@ export type PokemonEntry = {
   funFacts: string[];
   type: string;
   rarity: string;
-  coordinates: Coordinates;
-  locationName: string;
+  height?: string;
+  weight?: string;
+  weaknesses?: string[];
+  stats?: PokemonStats;
+  coordinates?: Coordinates;
+  locationName?: string;
   qrToken: string;
 };
 
@@ -26,8 +36,12 @@ export type PokemonContentEntry = {
   funFacts: string[];
   type: string;
   rarity: string;
-  locationName: string;
-  location: string;
+  height?: string;
+  weight?: string;
+  weaknesses?: string[];
+  stats?: PokemonStats;
+  locationName?: string;
+  location?: string;
   qrToken: string;
 };
 

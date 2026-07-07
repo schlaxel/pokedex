@@ -15,7 +15,11 @@ type MapViewProps = {
 };
 
 export function MapView({ entries }: MapViewProps) {
-  const center = entries[0]?.coordinates ?? { lat: 52.52, lng: 13.405 };
+  const mappableEntries = entries.filter(
+    (entry): entry is PokemonEntry & { coordinates: { lat: number; lng: number } } =>
+      Boolean(entry.coordinates),
+  );
+  const center = mappableEntries[0]?.coordinates ?? { lat: 52.52, lng: 13.405 };
 
   return (
     <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
@@ -23,17 +27,21 @@ export function MapView({ entries }: MapViewProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {entries.map((entry) => (
+      {mappableEntries.map((entry) => (
         <Marker
           key={entry.id}
           position={[entry.coordinates.lat, entry.coordinates.lng]}
           icon={icon}
         >
           <Popup>
-            <strong>{entry.nickname}</strong>
+            <span>Typ: {entry.type}</span>
             <br />
-            {entry.locationName}
-            <br />
+            {entry.locationName ? (
+              <>
+                {entry.locationName}
+                <br />
+              </>
+            ) : null}
             <a
               href={`https://www.google.com/maps/search/?api=1&query=${entry.coordinates.lat},${entry.coordinates.lng}`}
               target="_blank"

@@ -1,4 +1,5 @@
 import { Suspense, lazy, useEffect, useMemo, useState } from "react";
+import { MapPin } from "lucide-react";
 import {
   Link,
   NavLink,
@@ -8,8 +9,8 @@ import {
   useSearchParams,
 } from "react-router-dom";
 import { AdminQrCard } from "./components/AdminQrCard";
+import { CompanionEntryDetail } from "./components/CompanionEntryDetail";
 import { PokedexCard } from "./components/PokedexCard";
-import { PokedexDetail } from "./components/PokedexDetail";
 import { pokemonEntries, tokenToEntry } from "./data/pokemon";
 import {
   loadUnlockedIds,
@@ -21,6 +22,7 @@ import type { ScanStatus } from "./types";
 type Tab = "pokedex" | "map" | "test-codes";
 
 const LAST_UPDATED = "2026-04-06 02:43";
+const companionPathname = "/companions";
 const tabPathnames: Record<Tab, string> = {
   pokedex: "/",
   map: "/map",
@@ -68,15 +70,55 @@ export default function App() {
     persistUnlockedIds(unlockedIds);
   }, [unlockedIds]);
 
-  const unlockedSet = useMemo(() => new Set(unlockedIds), [unlockedIds]);
-  const completion = Math.round((unlockedIds.length / pokemonEntries.length) * 100);
-  const allUnlocked = unlockedIds.length === pokemonEntries.length;
-  const selectedEntryId = searchParams.get("entry");
-  const selectedEntry =
-    pokemonEntries.find((entry) => entry.id === selectedEntryId) ?? null;
-  const isScannerOpen = searchParams.get("scanner") === "1";
+  const previewParam = searchParams.get("preview");
+  const previewUnlockedIds = useMemo(() => {
+    if (!previewParam) {
+      return [];
+    }
 
-  if (!Object.values(tabPathnames).includes(location.pathname)) {
+    if (previewParam === "all") {
+      return pokemonEntries.map((entry) => entry.id);
+    }
+
+    return previewParam
+      .split(",")
+      .map((value) => value.trim())
+      .filter((value) => pokemonEntries.some((entry) => entry.id === value));
+  }, [previewParam]);
+  const effectiveUnlockedIds = useMemo(
+    () => Array.from(new Set([...unlockedIds, ...previewUnlockedIds])),
+    [previewUnlockedIds, unlockedIds],
+  );
+  const unlockedSet = useMemo(() => new Set(unlockedIds), [unlockedIds]);
+  const effectiveUnlockedSet = useMemo(
+    () => new Set(effectiveUnlockedIds),
+    [effectiveUnlockedIds],
+  );
+  const completion = Math.round(
+    (effectiveUnlockedIds.length / pokemonEntries.length) * 100,
+  );
+  const allUnlocked = effectiveUnlockedIds.length === pokemonEntries.length;
+  const mappedEntries = pokemonEntries.filter((entry) => entry.coordinates);
+  const entriesWithLocation = pokemonEntries.filter((entry) => entry.coordinates);
+  const entriesWithoutLocation = pokemonEntries.filter((entry) => !entry.coordinates);
+  const companionEntryId = searchParams.get("pokemon");
+  const companionEntry =
+    pokemonEntries.find((entry) => entry.id === companionEntryId) ?? null;
+  const isScannerOpen = searchParams.get("scanner") === "1";
+  const isCompanionRoute = location.pathname === companionPathname;
+
+  useEffect(() => {
+    if (!companionEntryId) {
+      return;
+    }
+
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [companionEntryId]);
+
+  if (
+    !Object.values(tabPathnames).includes(location.pathname) &&
+    location.pathname !== companionPathname
+  ) {
     return <Navigate to="/" replace />;
   }
 
@@ -84,59 +126,13 @@ export default function App() {
     ([, pathname]) => pathname === location.pathname,
   )?.[0] ?? "pokedex") as Tab;
 
-  function navigateWithOverlays(
-    pathname: string,
-    options?: {
-      entryId?: string | null;
-      scanner?: boolean;
-      replace?: boolean;
-    },
-  ) {
-    const nextParams = new URLSearchParams(searchParams);
-
-    if (options?.entryId !== undefined) {
-      if (options.entryId) {
-        nextParams.set("entry", options.entryId);
-      } else {
-        nextParams.delete("entry");
-      }
-    }
-
-    if (options?.scanner !== undefined) {
-      if (options.scanner) {
-        nextParams.set("scanner", "1");
-      } else {
-        nextParams.delete("scanner");
-      }
-    }
-
-    const nextSearch = nextParams.toString();
-
-    navigate(
-      {
-        pathname,
-        search: nextSearch ? `?${nextSearch}` : "",
-      },
-      { replace: options?.replace },
-    );
-  }
-
   function updateCurrentSearch(
     options: {
-      entryId?: string | null;
       scanner?: boolean;
       replace?: boolean;
     },
   ) {
     const nextParams = new URLSearchParams(searchParams);
-
-    if (options.entryId !== undefined) {
-      if (options.entryId) {
-        nextParams.set("entry", options.entryId);
-      } else {
-        nextParams.delete("entry");
-      }
-    }
 
     if (options.scanner !== undefined) {
       if (options.scanner) {
@@ -147,6 +143,24 @@ export default function App() {
     }
 
     setSearchParams(nextParams, { replace: options.replace });
+  }
+
+  function openCompanionEntry(entryId: string, options?: { replace?: boolean }) {
+    const nextParams = new URLSearchParams();
+
+    nextParams.set("pokemon", entryId);
+
+    if (previewParam) {
+      nextParams.set("preview", previewParam);
+    }
+
+    navigate(
+      {
+        pathname: companionPathname,
+        search: `?${nextParams.toString()}`,
+      },
+      { replace: options?.replace },
+    );
   }
 
   function unlockFromRaw(rawValue: string) {
@@ -161,10 +175,7 @@ export default function App() {
       return;
     }
 
-    navigateWithOverlays(tabPathnames.pokedex, {
-      entryId: entry.id,
-      scanner: false,
-    });
+    openCompanionEntry(entry.id);
 
     if (unlockedSet.has(entry.id)) {
       setScanStatus({
@@ -199,7 +210,6 @@ export default function App() {
     setScanStatus({ kind: "idle" });
     setResetArmed(false);
     updateCurrentSearch({
-      entryId: null,
       scanner: false,
       replace: true,
     });
@@ -215,6 +225,112 @@ export default function App() {
       kind: "error",
       message,
     });
+  }
+
+  if (isCompanionRoute) {
+    return (
+      <div className="app-shell">
+        <div className="pokedex-shell pokedex-shell--guide">
+          <header className="pokedex-header">
+            <div className="pokedex-lights" aria-hidden="true">
+              <span className="pokedex-lights__main" />
+              <span className="pokedex-lights__small pokedex-lights__small--red" />
+              <span className="pokedex-lights__small pokedex-lights__small--yellow" />
+              <span className="pokedex-lights__small pokedex-lights__small--green" />
+            </div>
+            <div className="pokedex-header__copy">
+              <h1>Pokedex Guide</h1>
+            </div>
+            <div className="pokedex-header__actions">
+              <div className="pokedex-progress">
+                <span>Pokemon</span>
+                <strong>{pokemonEntries.length}</strong>
+              </div>
+              {companionEntry ? (
+                <Link className="pokedex-header__back-link" to={companionPathname}>
+                  Zurück
+                </Link>
+              ) : null}
+            </div>
+          </header>
+
+          <main className={companionEntry ? "companion-main" : "screen"}>
+            {!companionEntry ? (
+              <section className="screen-panel">
+                <div className="screen-panel__header">
+                  <div>
+                    <p className="screen-panel__label">Begleiterseite</p>
+                    <h2>Alle Pokemon</h2>
+                  </div>
+                </div>
+
+                <p className="companion-list__intro">
+                  Wähle dein Pokemon aus, um den vollständigen Eintrag, den QR-Code
+                  und gegebenenfalls den Standort zu sehen.
+                </p>
+
+                <div className="companion-list">
+                  {entriesWithLocation.map((entry) => (
+                    <Link
+                      key={entry.id}
+                      className="companion-list__item"
+                      to={`${companionPathname}?pokemon=${entry.id}`}
+                    >
+                      <img
+                        className="companion-list__image"
+                        src={entry.image}
+                        alt={entry.nickname}
+                      />
+                      <div className="companion-list__copy">
+                        <p className="pokedex-card__index">#{entry.id}</p>
+                        <h3>{entry.nickname}</h3>
+                        <span className="companion-list__location">
+                          <MapPin aria-hidden="true" size={16} strokeWidth={2.25} />
+                          <span>{entry.locationName ?? "Kein Standort"}</span>
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+
+                  {entriesWithoutLocation.length > 0 ? (
+                    <div className="list-divider">
+                      <hr />
+                    </div>
+                  ) : null}
+
+                  {entriesWithoutLocation.map((entry) => (
+                    <Link
+                      key={entry.id}
+                      className="companion-list__item"
+                      to={`${companionPathname}?pokemon=${entry.id}`}
+                    >
+                      <img
+                        className="companion-list__image"
+                        src={entry.image}
+                        alt={entry.nickname}
+                      />
+                      <div className="companion-list__copy">
+                        <p className="pokedex-card__index">#{entry.id}</p>
+                        <h3>{entry.nickname}</h3>
+                        <span className="companion-list__location">
+                          <MapPin aria-hidden="true" size={16} strokeWidth={2.25} />
+                          <span>{entry.locationName ?? "Kein Standort"}</span>
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            ) : (
+              <CompanionEntryDetail
+                entry={companionEntry}
+                backHref={companionPathname}
+              />
+            )}
+          </main>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -261,13 +377,6 @@ export default function App() {
         >
           {activeTab === "pokedex" && (
             <section className="screen-panel screen-panel--map">
-              <div className="screen-panel__header">
-                <div>
-                  <p className="screen-panel__label">Registry</p>
-                  <h2>Friend Pokemon</h2>
-                </div>
-              </div>
-
               <div className="status-row">
                 <div className="status-pill">
                   Completion <strong>{completion}%</strong>
@@ -278,17 +387,34 @@ export default function App() {
               </div>
 
               <div className="pokedex-grid">
-                {pokemonEntries.map((entry) => (
+                {entriesWithLocation.map((entry) => (
                   <PokedexCard
                     key={entry.id}
                     entry={entry}
-                    unlocked={unlockedSet.has(entry.id)}
-                    onSelect={(pickedEntry) =>
-                      navigateWithOverlays(location.pathname, { entryId: pickedEntry.id })
-                    }
+                    unlocked={effectiveUnlockedSet.has(entry.id)}
+                    onSelect={(pickedEntry) => openCompanionEntry(pickedEntry.id)}
                   />
                 ))}
               </div>
+
+              {entriesWithoutLocation.length > 0 ? (
+                <>
+                  <div className="list-divider">
+                    <hr />
+                  </div>
+
+                  <div className="pokedex-grid">
+                    {entriesWithoutLocation.map((entry) => (
+                      <PokedexCard
+                        key={entry.id}
+                        entry={entry}
+                        unlocked={effectiveUnlockedSet.has(entry.id)}
+                        onSelect={(pickedEntry) => openCompanionEntry(pickedEntry.id)}
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : null}
 
               <div className="screen-panel__actions">
                 <button
@@ -309,11 +435,15 @@ export default function App() {
                   <p className="screen-panel__label">Area</p>
                   <h2>Pokemon Map</h2>
                 </div>
-                <div className="status-pill">{pokemonEntries.length} markers</div>
+                <div className="status-pill">{mappedEntries.length} markers</div>
               </div>
-              <Suspense fallback={<div className="panel__loading">Loading map...</div>}>
-                <MapView entries={pokemonEntries} />
-              </Suspense>
+              {mappedEntries.length > 0 ? (
+                <Suspense fallback={<div className="panel__loading">Loading map...</div>}>
+                  <MapView entries={mappedEntries} />
+                </Suspense>
+              ) : (
+                <div className="panel__loading">Noch keine Pokemon mit Standort hinterlegt.</div>
+              )}
             </section>
           )}
 
@@ -357,6 +487,9 @@ export default function App() {
           <div className="footer-links">
             <Link className="footer-link" to={tabPathnames["test-codes"]}>
               Test Codes
+            </Link>
+            <Link className="footer-link" to={companionPathname}>
+              Uebersichtsseite
             </Link>
             <a className="footer-link" href="/admin/index.html">
               Editor
@@ -409,12 +542,6 @@ export default function App() {
           </div>
         </div>
       )}
-
-      <PokedexDetail
-        entry={selectedEntry}
-        unlocked={selectedEntry ? unlockedSet.has(selectedEntry.id) : false}
-        onClose={() => updateCurrentSearch({ entryId: null })}
-      />
     </div>
   );
 }

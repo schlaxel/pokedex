@@ -1,0 +1,28 @@
+{
+  "id": "048",
+  "name": "Geister Potter",
+  "nickname": "Geister Potter",
+  "image": "/uploads/geister-potter.png",
+  "bio": "Ein schaurig grinsendes Geist-Pokemon mit hoher Defensive, unruhigem Blick und einer auffallenden Anfaelligkeit fuer Kippen und Titten.",
+  "funFacts": [
+    "Taucht besonders gern spaet am Abend auf.",
+    "Verzieht sich nie ganz, sondern bleibt immer irgendwie in der Naehe.",
+    "Wird deutlich schwaecher, sobald bestimmte Koeder ins Spiel kommen."
+  ],
+  "type": "Geist",
+  "rarity": "Nachtgestalt",
+  "height": "1,77 m",
+  "weight": "80 kg",
+  "locationName": "Parkplatz Berufsschulen",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.8449,47.9887]}",
+  "weaknesses": [
+    "Kippen",
+    "Titten"
+  ],
+  "stats": {
+    "hp": 110,
+    "attack": 40,
+    "defense": 140
+  },
+  "qrToken": "geister-potter"
+}
