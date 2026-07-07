@@ -9,7 +9,6 @@
     "Wird deutlich schwaecher, sobald bestimmte Koeder ins Spiel kommen."
   ],
   "type": "Geist",
-  "rarity": "Nachtgestalt",
   "height": "1,77 m",
   "weight": "80 kg",
   "locationName": "Parkplatz Berufsschulen",
@@ -22,6 +21,5 @@
     "hp": 110,
     "attack": 40,
     "defense": 140
-  },
-  "qrToken": "geister-potter"
+  }
 }

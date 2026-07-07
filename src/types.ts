@@ -16,7 +16,6 @@ export type PokemonEntry = {
   bio: string;
   funFacts: string[];
   type: string;
-  rarity: string;
   height?: string;
   weight?: string;
   weaknesses?: string[];
@@ -33,14 +32,12 @@ export type PokemonContentEntry = {
   bio: string;
   funFacts: string[];
   type: string;
-  rarity: string;
   height?: string;
   weight?: string;
   weaknesses?: string[];
   stats?: PokemonStats;
   locationName?: string;
   location?: string;
-  qrToken: string;
 };
 
 export type ScanStatus =

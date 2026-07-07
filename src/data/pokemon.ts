@@ -9,6 +9,16 @@ const pokemonContentEntries = Object.values(pokemonContentModules).sort((left, r
   left.id.localeCompare(right.id),
 );
 
+function createQrToken(name: string) {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/ß/g, "ss")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
 function parseCoordinates(entry: PokemonContentEntry) {
   if (!entry.location) {
     return undefined;
@@ -44,14 +54,13 @@ export const pokemonEntries: PokemonEntry[] = pokemonContentEntries
     bio: entry.bio,
     funFacts: entry.funFacts,
     type: entry.type,
-    rarity: entry.rarity,
     height: entry.height,
     weight: entry.weight,
     weaknesses: entry.weaknesses,
     stats: entry.stats,
     coordinates: parseCoordinates(entry),
     locationName: entry.locationName,
-    qrToken: entry.qrToken,
+    qrToken: createQrToken(entry.name),
   }))
   .sort((left, right) => {
     const leftHasCoordinates = Boolean(left.coordinates);

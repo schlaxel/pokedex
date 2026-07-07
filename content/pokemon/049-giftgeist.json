@@ -9,7 +9,6 @@
     "Spawned am liebsten dort, wo Heilmittel und Nebenwirkungen nah beieinanderliegen."
   ],
   "type": "Gift",
-  "rarity": "Toxischer Stratege",
   "height": "1,65 m",
   "weight": "62 kg",
   "locationName": "Apotheke Ferdinand-Weiss-Strasse",
@@ -21,6 +20,5 @@
     "hp": 118,
     "attack": 111,
     "defense": 128
-  },
-  "qrToken": "giftgeist"
+  }
 }

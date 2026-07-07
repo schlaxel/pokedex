@@ -141,7 +141,6 @@ export function CompanionEntryDetail({ entry, backHref }: CompanionEntryDetailPr
 
         <div className="detail-sheet__meta companion-detail__meta">
           <span>{entry.type}</span>
-          <span>{entry.rarity}</span>
           {entry.locationName ? (
             <div className="companion-detail__meta-location">
               <MapPin aria-hidden="true" size={16} strokeWidth={2.25} />

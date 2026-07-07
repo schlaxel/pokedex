@@ -9,7 +9,6 @@
     "Braucht keinen Kartenpunkt, um im Pokedex aufzufallen."
   ],
   "type": "Geiler Typ",
-  "rarity": "Selfie-Spawn",
   "height": "1,75 m",
   "weight": "70 kg",
   "weaknesses": [
@@ -19,6 +18,5 @@
     "hp": 1,
     "attack": 6,
     "defense": 1
-  },
-  "qrToken": "hannes"
+  }
 }

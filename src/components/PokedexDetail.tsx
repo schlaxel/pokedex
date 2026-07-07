@@ -31,7 +31,6 @@ export function PokedexDetail({
             </div>
             <div className="detail-sheet__meta">
               <span>{entry.type}</span>
-              <span>{entry.rarity}</span>
               {entry.locationName ? <span>{entry.locationName}</span> : null}
             </div>
             {(entry.height || entry.weight) && (

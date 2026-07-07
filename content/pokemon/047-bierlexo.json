@@ -8,10 +8,8 @@
     "Bleibt erstaunlich standfest, bis ploetzlich der Kater einsetzt.",
     "Hat in Alt Freiburg eine besonders hohe Spawn-Rate."
   ],
-  "rarity": "Tresen-Titan",
   "locationName": "Alt Freiburg",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.837115,47.995101]}",
-  "qrToken": "bierlexo",
   "height": "1,72 m",
   "weight": "102 kg",
   "type": "Wasser/Bier",

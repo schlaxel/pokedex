@@ -1,0 +1,26 @@
+{
+  "id": "031",
+  "name": "Steve",
+  "image": "/uploads/steve.png",
+  "bio": "Ein drahtiges Elektro-Pokemon mit soliden KP, wenig Defensive und einer auffallend breiten Liste an Anfaelligkeiten.",
+  "funFacts": [
+    "Taucht bevorzugt mit Sonnenbrille und maximaler Selbstverstaendlichkeit auf.",
+    "Laedt die Stimmung schneller auf als die eigene Verteidigung.",
+    "Sollte besser nicht gleichzeitig mit Wasser, Pflanzen und Geistern konfrontiert werden."
+  ],
+  "type": "Elektro",
+  "height": "1,87 m",
+  "weight": "61 kg",
+  "weaknesses": [
+    "Wasser",
+    "Pflanze",
+    "Gift",
+    "Geist",
+    "Elektro"
+  ],
+  "stats": {
+    "hp": 90,
+    "attack": 50,
+    "defense": 20
+  }
+}

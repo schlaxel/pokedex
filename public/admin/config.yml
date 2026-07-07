@@ -32,7 +32,6 @@ collections:
           - ""
         field: { label: Fact, name: fact, widget: string }
       - { label: Type, name: type, widget: string, default: "Normal" }
-      - { label: Rarity, name: rarity, widget: string, default: "Rare Spawn" }
       - { label: Height, name: height, widget: string, required: false, hint: "Example: 1,8 m" }
       - { label: Weight, name: weight, widget: string, required: false, hint: "Example: 85 kg" }
       - label: Weaknesses
@@ -52,5 +51,4 @@ collections:
           - { label: Verteidigung, name: defense, widget: number, required: false, value_type: int, min: 0 }
       - { label: Location Name, name: locationName, widget: string, required: false, default: "Freiburg im Breisgau" }
       - { label: Map Location, name: location, widget: map, type: Point, decimals: 6, required: false, hint: "Optional. Pick the Pokemon location directly on the map." }
-      - { label: QR Token, name: qrToken, widget: string, hint: "Required and must stay unique unless you also regenerate the QR code.", pattern: ["^[a-z0-9-]+$", "Use lowercase letters, numbers, and hyphens only."] }
       - { label: Image, name: image, widget: image, required: false, media_library: { config: { multiple: false } } }

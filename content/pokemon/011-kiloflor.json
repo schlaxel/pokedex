@@ -8,10 +8,8 @@
     "Ist eher Panzer als Sprinter.",
     "Sollte besser nicht in die Nahe von Pizzaofen geraten."
   ],
-  "rarity": "Defensiv-Tank",
   "locationName": "Eschholzpark",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.830111,47.998958]}",
-  "qrToken": "kiloflor",
   "height": "1,8 m",
   "weight": "85 kg",
   "type": "Pflanze/Gras",
