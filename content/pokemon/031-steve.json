@@ -7,7 +7,7 @@
     "Laedt die Stimmung schneller auf als die eigene Verteidigung.",
     "Sollte besser nicht gleichzeitig mit Wasser, Pflanzen und Geistern konfrontiert werden."
   ],
-  "name": "Steve",
+  "name": "Stifstecker",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.833184,47.994071]}",
   "weight": "61 kg",
   "type": "Elektro",
