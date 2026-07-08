@@ -1,9 +1,10 @@
 {
   "locationName": "Roma",
   "height": "188 cm",
-  "bio": "Evolution Etruskoli",
+  "bio": "Evolution von Etruskoli, hat 7 Hügel südlich der Alpen besiedelt. Lässt am liebsten andere für sich arbeiten. Mag sehr spritzigen Wasser- und Badespaß in den Thermen, paar Bahnen ziehen und dann schwimmen gehen.",
   "funFacts": [
-    "Schiebt abwechselnd Gottkompex wegen großer Macht früher und Minderwertigkeitskompex weil alles vorbei ist"
+    "Schiebt abwechselnd Gottkompex wegen großer Macht früher und Minderwertigkeitskompex weil alles vorbei ist",
+    "Hat mal seine Lizenz zum Streitwagen führen verloren nach einem langen Abend in den Tabernae"
   ],
   "name": "Römoli",
   "location": "{\"type\":\"Point\",\"coordinates\":[12.456295,41.899222]}",
@@ -11,5 +12,12 @@
   "type": "Kampf / Geist",
   "id": "753",
   "image": "/uploads/chatgpt-image-8.-juli-2026-20_33_41.png",
-  "weaknesses": []
+  "weaknesses": [
+    "Barbaren, Korruption, Palastintrigen, Ligretto, Biertornado"
+  ],
+  "stats": {
+    "hp": 7,
+    "attack": 5,
+    "defense": 3
+  }
 }
