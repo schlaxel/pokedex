@@ -12,6 +12,9 @@
   "type": "Gestein/Gift",
   "id": "074",
   "image": "/uploads/img_6230.jpeg",
+  "weaknesses": [
+    "Boden (sehr effektiv), Wasser, Stahl, Psycho"
+  ],
   "stats": {
     "hp": 75,
     "attack": 65,
