@@ -1,0 +1,15 @@
+{
+  "locationName": "Roma",
+  "height": "188 cm",
+  "bio": "Evolution Etruskoli",
+  "funFacts": [
+    "Schiebt abwechselnd Gottkompex wegen großer Macht früher und Minderwertigkeitskompex weil alles vorbei ist"
+  ],
+  "name": "Römoli",
+  "location": "{\"type\":\"Point\",\"coordinates\":[12.456295,41.899222]}",
+  "weight": "85 kg",
+  "type": "Kampf / Geist",
+  "id": "753",
+  "image": "/uploads/chatgpt-image-8.-juli-2026-20_33_41.png",
+  "weaknesses": []
+}
