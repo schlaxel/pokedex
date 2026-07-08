@@ -1,0 +1,21 @@
+{
+  "locationName": "",
+  "height": "2,6m",
+  "bio": "Humpelhüne hat einen unstillbaren Durst auf vergorenen Hopfensaft, den es in seinem hohlen Bauchpanzer braut. Wenn es ein großes Volksfest wittert, humpelt es unaufhaltsam darauf zu. Wird ihm sein Lieblingsgetränk verwehrt, wird es extrem übellaunig.",
+  "funFacts": [
+    "Trainer fangen Humpelhüne fast nie mit normalen Pokébällen. Sie nutzen ausgehöhlte, mit Hopfen eingeriebene Holzfässer, da das Pokémon dort freiwillig hineinsteigt",
+    "Wenn Humpelhüne nachts nach einem tiefen Schluck aus dem Bauchpanzer stolpert und hinfällt, registrieren Seismographen in der Region regelmäßig Erdbeben der Stärke 3."
+  ],
+  "name": "Humpelhüne ",
+  "weight": "185",
+  "type": "Normal",
+  "id": "068",
+  "weaknesses": [
+    "Obwohl sein Knie verletzt ist, weigert sich Humpelhüne strikt, Hilfe anzunehmen oder sich auszuruhen. Bietet ihm ein Trainer ein Heilitem oder eine Pause an, dreht es sich oft beleidigt weg. Es will sich absolut nicht eingestehen, dass es ohne seine Baumstamm-Krücken hilflos wäre."
+  ],
+  "stats": {
+    "hp": 80,
+    "attack": 75,
+    "defense": 25
+  }
+}
