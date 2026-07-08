@@ -7,7 +7,7 @@
     "Wirkt entspannt, trifft aber haerter als erwartet.",
     "Spawned am liebsten dort, wo Heilmittel und Nebenwirkungen nah beieinanderliegen."
   ],
-  "name": "Giftgeist",
+  "name": "Paramerkus",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.829166,47.996983]}",
   "weight": "62 kg",
   "type": "Gift",
