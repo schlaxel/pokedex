@@ -1,0 +1,19 @@
+{
+  "locationName": "Freiburg im Breisgau",
+  "height": "1,2m",
+  "bio": "Das kristallklare Pokémon.\nKonkristallotz lebt in Höhlen mit besonders mineralreichen Ablagerungen, wo es sich durch giftige Ausdünstungen langsam kristallisiert. Sein Körper glänzt so klar, dass selbst erfahrene Trainer für einen Augenblick geblendet werden. Diese Ablenkung nutzt es, um die Genauigkeit seiner Gegner zu senken.\nWenn es sich bedroht fühlt, stößt es reizende Dämpfe aus dem Inneren seines Körpers aus. Dadurch wird es selbst geschwächt, doch der Gegner verliert häufig die Fassung. Manche Exemplare werfen in diesem Zustand ihre auffällige kristalline Hinterkopf-Mähne in den Nacken, was ihre Gegner zusätzlich aus dem Takt bringt.",
+  "funFacts": [
+    "Kristallklar Typ: Gestein Effekt: Das Pokémon glänzt wie frisch ein frisches Kristallweizen. Die blendende Klarheit macht den Gegner unsicher und senkt seine Genauigkeit.",
+    "Magenkrampf  Typ: Gift   Kategorie: Spezial   Effekt: Fügt sich selbst Schaden zu und kann aber das Ziel vergiften. Wird nach der Attacke Kristallklar als Muss Folge gewirkt. ",
+    "Hinterkopf-Mähne Kategorie: Status   Effekt: Senkt die Initiative des Gegners und erhöht kurz die eigene Ausweichchance.   Beschreibung: Das Pokémon wirft seine wilden Vokuhila in den Nacken, wodurch der Gegner von der peinlich starken Präsenz aus dem Takt gebracht wird."
+  ],
+  "name": "Konkristallotz",
+  "weight": "38,4kg",
+  "type": "Gestein/Gift",
+  "id": "074",
+  "stats": {
+    "hp": 75,
+    "attack": 65,
+    "defense": 95
+  }
+}
