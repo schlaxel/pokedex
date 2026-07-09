@@ -1,0 +1,18 @@
+{
+  "locationName": "Freiburg im Breisgau",
+  "height": "1,85m",
+  "bio": "Brolaxo verfügt über familieninternes Wissen, das in falschen Momenten großen Schaden anrichten könnte. Es setzt diese Fähigkeit bisher erstaunlich verantwortungsvoll ein.",
+  "funFacts": [
+    "Wurde im selben Haushalt gespawnt"
+  ],
+  "name": "Brolaxo",
+  "weight": "2t",
+  "type": "Normal",
+  "id": "0123",
+  "image": "/uploads/brolaxo.jpg",
+  "stats": {
+    "attack": 0,
+    "defense": 100,
+    "hp": 0
+  }
+}
