@@ -1,11 +1,22 @@
 {
-  "bio": "... ",
+  "locationName": "Polizeipräsidium Freiburg",
+  "height": "170",
+  "bio": "Fullkarvinho ist ein treues Feuerpokemon, beheimatet in den hohen Lüften der essacher Bergen. \nNimm dich in Acht vor seinem feuerrotem Atem, das zwingt jeden Gegner in die Knie. \n\nEgal, wie viel Sonne scheint, seine Haut saugt jeden Strahl auf und lässt sie glühendrot erscheinen.",
   "funFacts": [
     "... "
   ],
+  "name": "Fullkarvinho",
+  "location": "{\"type\":\"Point\",\"coordinates\":[7.823113,48.002415]}",
+  "weight": "70",
   "type": "Feuer",
-  "locationName": "Polizeipräsidium Freiburg",
   "id": "099",
-  "name": "Ottmarvin Hitzefeld",
-  "location": "{\"type\":\"Point\",\"coordinates\":[7.823113,48.002415]}"
+  "image": "/uploads/1000082620.png",
+  "weaknesses": [
+    "Hopfenloses Wasser"
+  ],
+  "stats": {
+    "hp": 150,
+    "attack": 70,
+    "defense": 90
+  }
 }
