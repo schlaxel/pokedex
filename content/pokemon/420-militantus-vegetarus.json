@@ -1,0 +1,22 @@
+{
+  "locationName": "Heidelberg",
+  "height": "0,69m",
+  "bio": "Er ist der selbsternannte Pokémon-Champion, Enkel von Professor Eichelkäs und vermutlich der einzige Mensch, der „Hier sehen Sie den Mond“ für eine coole Catchphrase hält. Schon als Kind war klar: Er hat Talent, Ehrgeiz und eine beeindruckende Fähigkeit, immer genau zwei Schritte vor seinem Rivalen aufzutauchen.\nZu seinen Stärken zählen ein starkes Pokémon-Team, (zu) großes Selbstvertrauen und die seltene Begabung, jede Niederlage so aussehen zu lassen, als sei sie eigentlich nur ein strategischer Test gewesen. Seine Schwächen? Geduld, Bescheidenheit, Haare und die Tatsache, dass sein Großvater ihm offenbar lieber einen Pokédex als ein paar saftige Schellen gegeben hat.\nEr ist zweifellos ein fähiger Trainer — aber als Enkel von Professor Eichelkäs wahrscheinlich trotzdem eine kleine bis mittelgroße familiäre Enttäuschung. Immerhin: Er hat es zum Champion geschafft... Auch wenn seine Art einen Disput auszufechten gewöhnungsbedürftig ist und man dafür eine Menge Durst mitbringen muss.",
+  "funFacts": [
+    "Funfact: Wusstest du, dass Albert Einstein Vegetarier war?",
+    "Noch ein Funfact: Der Schauspieler von Wedge Antilles ist der Onkel von Ewan McGregor."
+  ],
+  "name": "Militantus Vegetarus",
+  "weight": "161kg",
+  "type": "Raw",
+  "id": "420",
+  "image": "/uploads/2564ad99-c937-4c31-875d-ad70b7df2b7d.png",
+  "weaknesses": [
+    "Pokemong"
+  ],
+  "stats": {
+    "hp": 67,
+    "attack": 1312,
+    "defense": 1
+  }
+}
