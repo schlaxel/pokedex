@@ -3,9 +3,8 @@
   "height": "170",
   "bio": "Fullkarvinho ist ein treues Feuerpokemon, beheimatet in den hohen Lüften der essacher Berge und ein Freund der örtlichen Officer..\n\n",
   "funFacts": [
-    "Nimm dich in Acht vor seinem feuerrotem Atem, das zwingt jeden Gegner in die Knie. ",
-    "Egal, wie viel Sonne scheint, seine Haut saugt jeden Strahl auf und lässt sie glühendrot erscheinen.",
-    "Kann Wasser nicht ausstehen, es sei denn, man fügt Hopfen, Malz und Hefe hinzu"
+    "Nimm dich in Acht vor seinem feuerrotem Atem, entfacht durch die Lüfte der Essacher Berge..",
+    "Durch seine feuerrote Haut kannst du Fullkarvinho immer erkennen, die durch die Energie jedes Sonnenstrahls für seine Farbe sorgt.."
   ],
   "name": "Fullkarvinho",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.823113,48.002415]}",
