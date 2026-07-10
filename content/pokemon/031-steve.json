@@ -1,11 +1,11 @@
 {
   "locationName": "E-Werk",
   "height": "1,87 m",
-  "bio": "Ein drahtiges Elektro-Pokemon mit soliden KP, wenig Defensive und einer auffallend breiten Liste an Anfaelligkeiten.",
+  "bio": "Ein drahtiges, schlangenartiges Elektro-Pokémon mit soliden KP, wenig Defensive und einer auffallend breiten Liste an Anfälligkeiten.",
   "funFacts": [
-    "Taucht bevorzugt mit Sonnenbrille und maximaler Selbstverstaendlichkeit auf.",
     "Laedt die Stimmung schneller auf als die eigene Verteidigung.",
-    "Sollte besser nicht gleichzeitig mit Wasser, Pflanzen und Geistern konfrontiert werden."
+    "Sollte besser nicht gleichzeitig mit Wasser, Pflanzen und Geistern konfrontiert werden.",
+    "Besonders in der Dunkelheit der Nacht kann es verheerende Mengen an Energie auf einmal abgeben. Dieser mächtige Stoß büßt jedoch einen extrem hohen Preis ein: Nach der Entladung verliert es nahezu seine kompletten Lebenspunkte und bleibt geschwächt zurück."
   ],
   "name": "Stifstecker",
   "location": "{\"type\":\"Point\",\"coordinates\":[7.833184,47.994071]}",
